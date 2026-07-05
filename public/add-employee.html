@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Add Employee | Manage Mate</title>
+
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+
+  <body>
+    <nav class="navbar">
+      <a href="dashboard.html" class="brand"> Manage Mate </a>
+
+      <div class="nav-links">
+        <a href="dashboard.html"> Dashboard </a>
+
+        <a href="employees.html"> Employees </a>
+
+        <a href="departments.html"> Departments </a>
+
+        <button type="button" class="logout" id="logoutButton">Logout</button>
+      </div>
+    </nav>
+
+    <main class="container">
+      <section class="page-header">
+        <div>
+          <h1>Add Employee</h1>
+
+          <p>Register a new employee in the system.</p>
+        </div>
+
+        <a href="employees.html" class="button secondary"> View Employees </a>
+      </section>
+
+      <div id="message" class="alert" hidden></div>
+
+      <section class="form-card">
+        <form id="employeeForm">
+          <div class="form-grid">
+            <div>
+              <label for="employeeId"> Employee ID </label>
+
+              <input
+                type="text"
+                id="employeeId"
+                placeholder="Example: EMP001"
+                required
+              />
+            </div>
+
+            <div>
+              <label for="employeeName"> Employee Name </label>
+
+              <input
+                type="text"
+                id="employeeName"
+                placeholder="Enter employee name"
+                required
+              />
+            </div>
+
+            <div>
+              <label for="email"> Email Address </label>
+
+              <input
+                type="email"
+                id="email"
+                placeholder="employee@example.com"
+                required
+              />
+            </div>
+
+            <div>
+              <label for="phone"> Phone Number </label>
+
+              <input type="tel" id="phone" placeholder="Enter phone number" />
+            </div>
+
+            <div>
+              <label for="department"> Department </label>
+
+              <select id="department" required>
+                <option value="">Select Department</option>
+              </select>
+            </div>
+
+            <div>
+              <label for="designation"> Designation </label>
+
+              <input
+                type="text"
+                id="designation"
+                placeholder="Enter designation"
+                required
+              />
+            </div>
+
+            <div>
+              <label for="salary"> Salary </label>
+
+              <input
+                type="number"
+                id="salary"
+                min="0"
+                step="0.01"
+                placeholder="Enter salary"
+                required
+              />
+            </div>
+
+            <div>
+              <label for="joiningDate"> Joining Date </label>
+
+              <input type="date" id="joiningDate" required />
+            </div>
+          </div>
+
+          <button type="submit">Add Employee</button>
+        </form>
+      </section>
+    </main>
+
+    <script src="js/common.js"></script>
+
+    <script src="js/employee-form.js"></script>
+  </body>
+</html>

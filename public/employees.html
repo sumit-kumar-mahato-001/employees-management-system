@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Employees | Manage Mate</title>
+
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+
+  <body>
+    <nav class="navbar">
+      <a href="dashboard.html" class="brand"> Manage Mate </a>
+
+      <div class="nav-links">
+        <a href="dashboard.html"> Dashboard </a>
+
+        <a href="employees.html"> Employees </a>
+
+        <a href="departments.html"> Departments </a>
+
+        <button type="button" class="logout" id="logoutButton">Logout</button>
+      </div>
+    </nav>
+
+    <main class="container">
+      <section class="page-header">
+        <div>
+          <h1>Employee Management</h1>
+
+          <p>View, search, edit and delete employee records.</p>
+        </div>
+
+        <a href="add-employee.html" class="button"> Add Employee </a>
+      </section>
+
+      <div id="message" class="alert" hidden></div>
+
+      <form id="searchForm" class="search-form">
+        <input
+          type="search"
+          id="searchInput"
+          placeholder="Search by employee ID or name"
+        />
+
+        <button type="submit">Search</button>
+
+        <button type="button" class="secondary" id="clearButton">Clear</button>
+      </form>
+
+      <section class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Employee ID</th>
+
+              <th>Name</th>
+
+              <th>Email</th>
+
+              <th>Phone</th>
+
+              <th>Department</th>
+
+              <th>Designation</th>
+
+              <th>Salary</th>
+
+              <th>Joining Date</th>
+
+              <th>Action</th>
+            </tr>
+          </thead>
+
+          <tbody id="employeeTableBody">
+            <tr>
+              <td colspan="9" class="empty">Loading employees...</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+    </main>
+
+    <script src="js/common.js"></script>
+
+    <script src="js/employees.js"></script>
+  </body>
+</html>

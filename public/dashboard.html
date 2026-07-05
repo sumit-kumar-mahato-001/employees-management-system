@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Dashboard | Manage Mate</title>
+
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+
+  <body>
+    <nav class="navbar">
+      <a href="dashboard.html" class="brand"> Manage Mate </a>
+
+      <div class="nav-links">
+        <a href="dashboard.html"> Dashboard </a>
+
+        <a href="employees.html"> Employees </a>
+
+        <a href="departments.html"> Departments </a>
+
+        <button type="button" class="logout" id="logoutButton">Logout</button>
+      </div>
+    </nav>
+
+    <main class="container">
+      <section class="page-header">
+        <div>
+          <h1>Dashboard</h1>
+
+          <p>Employee Information Management System</p>
+        </div>
+      </section>
+
+      <section class="stats-grid">
+        <div class="stat-card">
+          <span> Total Employees </span>
+
+          <strong id="totalEmployees"> 0 </strong>
+        </div>
+
+        <div class="stat-card">
+          <span> Total Departments </span>
+
+          <strong id="totalDepartments"> 0 </strong>
+        </div>
+      </section>
+
+      <section class="action-grid">
+        <a href="add-employee.html" class="action-card">
+          <h3>Add Employee</h3>
+
+          <p>Register a new employee in the system.</p>
+        </a>
+
+        <a href="employees.html" class="action-card">
+          <h3>View Employees</h3>
+
+          <p>View, search, edit and delete employee records.</p>
+        </a>
+
+        <a href="departments.html" class="action-card">
+          <h3>Department Management</h3>
+
+          <p>Add, edit and manage company departments.</p>
+        </a>
+      </section>
+    </main>
+
+    <script src="js/common.js"></script>
+
+    <script src="js/dashboard.js"></script>
+  </body>
+</html>
