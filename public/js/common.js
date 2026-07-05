@@ -1,24 +1,5 @@
-function confirmDelete(type) {
-  return confirm(`Are you sure you want to delete this ${type}?`);
-}
-
-function validateEmployeeForm(form) {
-  const phone = form.phone.value.trim();
-  const salary = Number(form.salary.value);
-
-  if (phone && !/^\d{10}$/.test(phone)) {
-    alert('Phone number must contain exactly 10 digits.');
-    form.phone.focus();
-    return false;
-  }
-
-  if (salary < 0) {
-    alert('Salary cannot be negative.');
-    form.salary.focus();
-    return false;
-  }
-
-  return true;async function checkLogin() {
+async function checkLogin() {
+  try {
     const response = await fetch("/api/auth/check");
 
     const data = await response.json();
@@ -26,16 +7,35 @@ function validateEmployeeForm(form) {
     if (!data.loggedIn) {
       window.location.href = "/login.html";
     }
+  } catch (error) {
+    console.error("Login check error:", error);
   }
+}
 
-  async function logout() {
-    await fetch("/api/auth/logout", {
+async function logout() {
+  try {
+    const response = await fetch("/api/auth/logout", {
       method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
     });
 
-    window.location.href = "/login.html";
-  }
+    const data = await response.json();
 
+    if (!response.ok) {
+      alert(data.message || "Logout failed");
+      return;
+    }
+
+    window.location.href = "/login.html";
+  } catch (error) {
+    console.error("Logout error:", error);
+    alert("Unable to logout");
+  }
+}
+
+document.addEventListener("DOMContentLoaded", () => {
   const logoutButton = document.getElementById("logoutButton");
 
   if (logoutButton) {
@@ -43,4 +43,4 @@ function validateEmployeeForm(form) {
   }
 
   checkLogin();
-}
+});
