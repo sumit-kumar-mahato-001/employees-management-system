@@ -8,6 +8,12 @@ router.post("/login", async (req, res) => {
   try {
     const { username, password } = req.body;
 
+    if (!username || !password) {
+      return res.status(400).json({
+        message: "Username and password are required",
+      });
+    }
+
     const [admins] = await db.execute(
       "SELECT * FROM admins WHERE username = ?",
       [username],
@@ -34,11 +40,21 @@ router.post("/login", async (req, res) => {
       username: admin.username,
     };
 
-    res.json({
-      message: "Login successful",
+    req.session.save((error) => {
+      if (error) {
+        console.error("Session save error:", error);
+
+        return res.status(500).json({
+          message: "Login session error",
+        });
+      }
+
+      res.json({
+        message: "Login successful",
+      });
     });
   } catch (error) {
-    console.log(error);
+    console.error("Login error:", error);
 
     res.status(500).json({
       message: "Server error",
@@ -53,7 +69,17 @@ router.get("/check", (req, res) => {
 });
 
 router.post("/logout", (req, res) => {
-  req.session.destroy(() => {
+  req.session.destroy((error) => {
+    if (error) {
+      console.error("Logout error:", error);
+
+      return res.status(500).json({
+        message: "Unable to logout",
+      });
+    }
+
+    res.clearCookie("connect.sid");
+
     res.json({
       message: "Logout successful",
     });
